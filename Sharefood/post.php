@@ -11,7 +11,7 @@ require_once('view/top.php');
       <span class="bar"></span>
     </p>
     <p>
-      <textarea name="description" class="autoExpand" rows="3" placeholder="Tell us a bit more about your food (e.g. quantity, best before date)"></textarea>
+      <textarea name="description" rows="3" placeholder="Tell us a bit more about your food (e.g. quantity, best before date)"></textarea>
     </p>
     <input type='file' accept="image/gif, image/jpeg, image/png, image/jpg" id="image">
     <input type='hidden' id="imgpath" name="path">
@@ -55,7 +55,7 @@ require_once('view/top.php');
       <span class="highlight"></span>
       <span class="bar"></span>
     </p>
-    <span class="pswcheck">*password length should be 4 to 20 characters, numbers or symbols.</span>
+    <span class="pswcheck">*password must be between 4 to 20 characters and can contain letters, numbers or symbols.</span>
   <div class="toggleDiv">
     <input type="checkbox" id="toggle"/>
     <label for="toggle">
@@ -75,11 +75,8 @@ require_once('view/top.php');
 
   </form>
 
-
-
 <script src="js/fileupload.js"></script>
-<script src="js/script.js?=v1"></script>
-<script src="js/expnd-ta.js"></script>
+<script src="js/script.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>loadStoredDetails('email')</script>

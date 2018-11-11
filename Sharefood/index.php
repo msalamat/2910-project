@@ -13,7 +13,7 @@ $conn = db_init($config["host"], $config["dbuser"], $config["dbpw"], $config["db
   </div>
   <div id="searchcontainer">
   <form action="index.php" method="GET" name="searching">
-    <input id="searchbox" type="text" name="search" placeholder="Search for free food..." >
+    <input id="searchbox" type="text" name="search" placeholder="Search by food, campus..." >
     <button id="searchbtn" type="submit">&nbsp;</button>
   </form>
   </div>
@@ -63,10 +63,24 @@ $conn = db_init($config["host"], $config["dbuser"], $config["dbpw"], $config["db
     }else{
       $icon = "<i class='fa fa-times-circle' style='font-size:24px;color:grey'></i>";
     }
+    
+    date_default_timezone_set("America/Los_Angeles");
+    $d1=strtotime($created);
+    $d2=ceil((time()-$d1)/60/60/24)-1;
+    
     echo "<a href=\"detail.php?id={$row['id']}\"><div class='list_item'><p class='list_title'>{$escaped['title']}</p>";
     echo "<img src=\"{$escaped['image']}\" class='uploadedImg'>
-    <p>Status:&nbsp; {$escaped['status']} $icon<br>Posted: &nbsp; {$created}</p>
-    </div></a>";
+    <p>Status:&nbsp; {$escaped['status']} $icon<br>";
+    
+    if($d2 <= 0){
+      echo"Posted: &nbsp;Today</p></div></a>";
+    } else if($d2 == 1){
+      echo"Posted: &nbsp;Yesterday</p></div></a>";
+    } else if($d2<7){
+      echo"Posted: &nbsp;$d2 days ago</p></div></a>";
+    } else {
+      echo "Posted: &nbsp; $created</p></div></a>";
+    }
 
     $lastid = $row['id'];
     }
@@ -77,11 +91,12 @@ $conn = db_init($config["host"], $config["dbuser"], $config["dbpw"], $config["db
 <!-- game section -->
 <div id="gamesection"  class="list_item">
   <p><b>There's no result found. </b><br>Do you want to play a game instead?</p>
-  <br>
+  <br><div id="breakout">
     <a href="game_breakout.php"><p class="list_title">Break out</p>
-    <img src="img/breakout.png" class="gameimg"></a><br>
+    <img src="img/breakout.png" class="gameimg"></a><br></div>
+    <div id="appleGame">
     <a href="game_apple.php"><p class="list_title">Eat Apple Fast</p>
-    <img src="img/appleScreenshot.png" class="gameimg"></a>
+    <img src="img/appleScreenshot.png" class="gameimg"></a></div>
   <br>
 </div>
 

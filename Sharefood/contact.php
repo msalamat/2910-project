@@ -9,7 +9,7 @@ require_once('view/top.php');
     <p class="list_title">Get in Touch</p>
     <p>Send us your questions and we will get back to you!</p>
 
-    <p><input class="textinput" type="text" name="name" id="contact-name" pattern="[A-Za-z]{2,30}" placeholder="Name" required="required">
+    <p><input class="textinput" type="text" name="name" id="contact-name" placeholder="Name" required="required">
     <span class="highlight"></span>
     <span class="bar"></span>
     </p>
@@ -22,7 +22,7 @@ require_once('view/top.php');
     <span class="bar"></span></p>
     <p><textarea placeholder="What's on your mind?" name="message"
     rows="7" cols="20"></textarea></p>
-    <p><button type="submit" class="button" onclick="saveData('contactEmail')">Send</button></p>
+    <p><button type="submit" class="button" onclick="saveData('contactEmail')"><i class="fa fa-send-o" style="font-size:15px"></i> Send</button></p>
 
 </form>
 </div>

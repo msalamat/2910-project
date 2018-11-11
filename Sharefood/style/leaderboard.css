@@ -32,8 +32,12 @@
 }
 
 #myCanvas{
+    display:initial;
+    transform:initial;
     left: calc(50% - 160px);
     position: absolute;
+    top:initial;
+    
 }
 
 .lock-screen {
@@ -69,6 +73,8 @@
 }
 
 td, th{
+    max-width: 80px;
+    overflow: hidden;
     padding: 5px;
     border: 1px solid white;
 }

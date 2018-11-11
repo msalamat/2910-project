@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="style/style.css?v=1">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
 
 if(count($_POST) == 0) {
@@ -43,11 +46,25 @@ if(count($_POST) == 0) {
     /* Message Content - Choose simple text or HTML email */
 
     // Choose to send either a simple text email...
-    $mail->Body = "Sent from: $escaped_from \n\n" . $escaped_msg; // Set a plain text body.
+    $mail->Body = "<img src='http://sharefood.today/img/logoFull.png' width='250'><p>Sent from: $escaped_from</p>
+    <p>$escaped_msg</p>
+    <p><a href='http://sharefood.today/detail.php?id=$filtered_id' target='_blank'>Click to check the item</a></p>"; // Set a plain text body.
+    
+    $mail->IsHTML(true);
 
     if ($mail->send()) {
-        echo "<script>alert ('Message has been sent successfully');
-        window.location.replace('index.php');</script>";
+        echo "<script>
+        $(document).ready(function(){
+            swal({
+                title: 'Sent',
+                text: 'Meesage has been successfully sent!',
+                icon: 'success',
+                button: 'ok',
+              });
+            window.location.replace('index.php');
+        });
+        
+        </script>";
     } else {
         echo "Sorry, there's problem in the mail server.<br>
         <a href='email_process.php?id={$filtered_id}'>Go back</a>";

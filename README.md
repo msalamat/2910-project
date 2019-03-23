@@ -1,3 +1,3 @@
 # 2910-project
 
-Metro Vancouver reduce food waste project.
+Reducing food waste project for Metro Vancouver
